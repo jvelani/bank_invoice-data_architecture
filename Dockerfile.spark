@@ -1,0 +1,15 @@
+FROM bitnami/spark:latest
+
+USER root
+
+# PostgreSQL JDBC
+ADD https://jdbc.postgresql.org/download/postgresql-42.7.3.jar /opt/spark/jars/postgresql.jar
+
+# MongoDB Spark Connector
+ADD https://repo1.maven.org/maven2/org/mongodb/spark/mongo-spark-connector_2.12/10.1.1/mongo-spark-connector_2.12-10.1.1.jar /opt/spark/jars/mongo-spark-connector.jar
+
+# Hadoop AWS for S3 / MinIO
+ADD https://repo1.maven.org/maven2/org/apache/hadoop/hadoop-aws/3.3.6/hadoop-aws-3.3.6.jar /opt/spark/jars/hadoop-aws.jar
+ADD https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/1.12.739/aws-java-sdk-bundle-1.12.739.jar /opt/spark/jars/aws-sdk-bundle.jar
+
+USER 1001
